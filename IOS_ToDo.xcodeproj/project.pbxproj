@@ -88,13 +88,9 @@
 		843624AC18DB2E4E00739F7F = {
 			isa = PBXGroup;
 			children = (
-				8452339618F1D1C2005FF14B /* ToDoItem.h */,
-				8452339718F1D1C2005FF14B /* ToDoItem.m */,
-				843624EF18DB739B00739F7F /* ToDoListTableViewController.h */,
-				843624F018DB739B00739F7F /* ToDoListTableViewController.m */,
-				843624E918DB6E3100739F7F /* AddToDoItemViewController.h */,
-				843624EA18DB6E3100739F7F /* AddToDoItemViewController.m */,
-				843624BE18DB2E4E00739F7F /* IOS_ToDo */,
+				8452339918F30593005FF14B /* Model */,
+				843624BE18DB2E4E00739F7F /* View */,
+				8452339A18F305C8005FF14B /* Controller */,
 				843624D718DB2E4E00739F7F /* IOS_ToDoTests */,
 				843624B718DB2E4E00739F7F /* Frameworks */,
 				843624B618DB2E4E00739F7F /* Products */,
@@ -121,7 +117,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		843624BE18DB2E4E00739F7F /* IOS_ToDo */ = {
+		843624BE18DB2E4E00739F7F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				843624C718DB2E4E00739F7F /* AppDelegate.h */,
@@ -130,6 +126,7 @@
 				843624CA18DB2E4E00739F7F /* Images.xcassets */,
 				843624BF18DB2E4E00739F7F /* Supporting Files */,
 			);
+			name = View;
 			path = IOS_ToDo;
 			sourceTree = "<group>";
 		};
@@ -160,6 +157,26 @@
 				843624DA18DB2E4F00739F7F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8452339918F30593005FF14B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8452339718F1D1C2005FF14B /* ToDoItem.m */,
+				8452339618F1D1C2005FF14B /* ToDoItem.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8452339A18F305C8005FF14B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				843624EA18DB6E3100739F7F /* AddToDoItemViewController.m */,
+				843624E918DB6E3100739F7F /* AddToDoItemViewController.h */,
+				843624F018DB739B00739F7F /* ToDoListTableViewController.m */,
+				843624EF18DB739B00739F7F /* ToDoListTableViewController.h */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
