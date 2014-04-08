@@ -41,7 +41,7 @@
 //De hele get actie
 - (IBAction)fetchTasks;
 {
-    NSURL *url = [NSURL URLWithString:@"http://frankwammes.nl/tasks"];
+    NSURL *url = [NSURL URLWithString:@"http://frankwammes.nl:8080/tasks"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -50,15 +50,18 @@
      {
          if (data.length > 0 && connectionError == nil)
          {
+             NSLog(@"geen data ontvangen");
              NSError *e = nil;
              NSArray *taskData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &e];
              if(!taskData){
                  NSLog(@"Error met het parsen van JSON: %@", e);
              }else{
-          
+                 NSLog(@"data ontvangen ");
              for (NSDictionary *task in taskData) {
                  [self.toDoItems addObject:[task objectForKey:@"task"]];
              }
+                 [self.tableView reloadData];
+
              }
             
          }
