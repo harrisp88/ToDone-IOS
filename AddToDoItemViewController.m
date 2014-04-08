@@ -25,10 +25,19 @@
     if (self.textField.text.length > 0) {
         
         self.toDoItem = [[ToDoItem alloc] init];
-        self.toDoItem.itemName = self.textField.text;
+        self.toDoItem.task = self.textField.text;
         self.toDoItem.completed = NO;
     }
 }
+
+//http://blog.strikeiron.com/bid/63338/Integrate-a-REST-API-into-an-iPhone-App-in-less-than-15-minutes
+//opbouwen posturl
+//NSString *restCallString = [NSString stringWithFormat:@"http://frankwammes.nl/tasks/%@" ,
+                      //      self.textField.text ];
+
+
+
+
 
 
 
