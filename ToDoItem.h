@@ -12,6 +12,7 @@
 
 @property NSString *task;
 @property BOOL completed;
+@property NSString *beschrijving;
 @property (readonly) NSDate *creationDate;
 
 

@@ -9,6 +9,7 @@
 #import "AddToDoItemViewController.h"
 
 @interface AddToDoItemViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *textField2;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
@@ -26,6 +27,7 @@
         
         self.toDoItem = [[ToDoItem alloc] init];
         self.toDoItem.task = self.textField.text;
+        self.toDoItem.beschrijving =self.textField2.text;
         self.toDoItem.completed = NO;
     }
 }

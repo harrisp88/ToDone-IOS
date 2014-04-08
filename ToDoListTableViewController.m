@@ -17,7 +17,7 @@
 @end
 
 @implementation ToDoListTableViewController
-- (void)loadInitialData {
+/*- (void)loadInitialData {
     ToDoItem *task1 = [[ToDoItem alloc] init];
     task1.task = @"Doe de afwas";
     [self.toDoItems addObject:task1];
@@ -27,7 +27,7 @@
     ToDoItem *task3 = [[ToDoItem alloc] init];
     task3.task = @"App maken";
     [self.toDoItems addObject:task3];
-}
+}testdata*/
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
@@ -41,6 +41,8 @@
 //De hele get actie
 - (IBAction)fetchTasks;
 {
+    [self.toDoItems removeAllObjects];
+    
     NSURL *url = [NSURL URLWithString:@"http://frankwammes.nl:8080/tasks"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -50,24 +52,32 @@
      {
          if (data.length > 0 && connectionError == nil)
          {
-             NSLog(@"geen data ontvangen");
+             NSLog(@"data ontvangen");
              NSError *e = nil;
              NSArray *taskData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &e];
              if(!taskData){
                  NSLog(@"Error met het parsen van JSON: %@", e);
              }else{
-                 NSLog(@"data ontvangen ");
+                 NSLog(@"Parsen van JSON gelukt");
              for (NSDictionary *task in taskData) {
-                 [self.toDoItems addObject:[task objectForKey:@"task"]];
+                 
+                 ToDoItem *task1 = [[ToDoItem alloc] init];
+                 task1.task = [task objectForKey:@"task"];
+                 task1.completed =[[task objectForKey:@"status"] boolValue];
+                 task1.beschrijving =[task objectForKey:@"description"];
+                 [self.toDoItems addObject:task1];
              }
                  [self.tableView reloadData];
 
              }
             
+         }else{
+             NSLog(@"alles is kut");
          }
      }];
 }
 //einde get
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -82,7 +92,7 @@
 {
     [super viewDidLoad];
     self.toDoItems = [[NSMutableArray alloc] init];
-    [self loadInitialData];
+   // [self loadInitialData];
     [self fetchTasks];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -119,6 +129,7 @@
     // Configure the cell...
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     cell.textLabel.text = toDoItem.task;
+    cell.detailTextLabel.text = toDoItem.beschrijving;
     
     if (toDoItem.completed) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
