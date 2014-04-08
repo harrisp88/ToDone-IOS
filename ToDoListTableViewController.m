@@ -14,6 +14,7 @@
 
 @property NSMutableArray *toDoItems;
 
+
 @end
 
 @implementation ToDoListTableViewController
@@ -38,6 +39,7 @@
         [self.tableView reloadData];
     }
 }
+
 //De hele get actie
 - (IBAction)fetchTasks;
 {
@@ -94,6 +96,10 @@
     self.toDoItems = [[NSMutableArray alloc] init];
    // [self loadInitialData];
     [self fetchTasks];
+    //set the edit button
+    //alles om die o zo lastige edit button te tonen (:
+    //in een van de comments van: //http://stackoverflow.com/questions/7921579/iphone-storyboard-editing-a-table-view
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

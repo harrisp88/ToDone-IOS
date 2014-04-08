@@ -37,13 +37,13 @@
 //NSString *restCallString = [NSString stringWithFormat:@"http://frankwammes.nl/tasks/%@" ,
                       //      self.textField.text ];
 - (IBAction)postTask {
-
+/*
 NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] init];
 [mutableRequest setURL:[NSURL URLWithString:[NSString
-                                             stringWithFormat:@"http://frankwammes.nl/task/%@",TaskID]]];
+                                             stringWithFormat:@"http://frankwammes.nl/tasks/%@",TaskID]]];
 [mutableRequest setHTTPMethod:@"Post"];
-[mutableRequest setHTTPBody/*hier komt de data*/]
-
+[mutableRequest setHTTPBody/*hier komt de data]
+*/
 }
 
 

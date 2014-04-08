@@ -8,7 +8,7 @@
         <scene sceneID="8cP-kt-sog">
             <objects>
                 <tableViewController id="wSs-or-rQF" customClass="ToDoListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5X8-BT-Xrt">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5X8-BT-Xrt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,7 +31,7 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" textLabel="p9D-nm-lwP" detailTextLabel="XWl-HV-9MY" style="IBUITableViewCellStyleSubtitle" id="W5n-nv-ulm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" editingAccessoryType="disclosureIndicator" textLabel="p9D-nm-lwP" detailTextLabel="XWl-HV-9MY" style="IBUITableViewCellStyleSubtitle" id="W5n-nv-ulm">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W5n-nv-ulm" id="CUv-3c-2Mq">
@@ -114,7 +114,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Mijn Takenlijst" id="f5b-3c-PPz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="KJ9-iW-BrG"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="fFw-vN-puJ">
                             <connections>
                                 <segue destination="X0m-3N-fdA" kind="modal" id="mC2-Ju-ps6"/>
@@ -147,8 +146,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Beschrijving" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-nq-SAz">
-                                <rect key="frame" x="20" y="171" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Beschrijving" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-nq-SAz">
+                                <rect key="frame" x="20" y="166" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -156,8 +155,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mbh-nq-SAz" firstAttribute="leading" secondItem="rSl-KM-aJO" secondAttribute="leading" constant="20" id="PxV-Ha-IXJ"/>
                             <constraint firstItem="48E-gN-2Rh" firstAttribute="leading" secondItem="rSl-KM-aJO" secondAttribute="leading" constant="20" id="Vcx-C4-aK9"/>
                             <constraint firstItem="48E-gN-2Rh" firstAttribute="top" secondItem="dwx-O8-meW" secondAttribute="bottom" constant="64" id="XJE-SY-rcv"/>
+                            <constraint firstAttribute="trailing" secondItem="Mbh-nq-SAz" secondAttribute="trailing" constant="20" id="XTe-CT-3bG"/>
+                            <constraint firstItem="Mbh-nq-SAz" firstAttribute="top" secondItem="dwx-O8-meW" secondAttribute="bottom" constant="102" id="cm6-Si-jI5"/>
                             <constraint firstAttribute="trailing" secondItem="48E-gN-2Rh" secondAttribute="trailing" constant="20" id="jdU-xl-C71"/>
                         </constraints>
                     </view>
