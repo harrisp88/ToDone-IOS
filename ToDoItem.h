@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ToDoItem : NSObject
-
+@property NSInteger taskId;
 @property NSString *task;
 @property BOOL completed;
 @property NSString *beschrijving;
