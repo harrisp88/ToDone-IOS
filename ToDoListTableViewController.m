@@ -64,9 +64,12 @@
              for (NSDictionary *task in taskData) {
                  
                  ToDoItem *task1 = [[ToDoItem alloc] init];
+                 
+                 task1.taskId = [[task objectForKey:@"ID"] intValue];
                  task1.task = [task objectForKey:@"task"];
                  task1.completed =[[task objectForKey:@"status"] boolValue];
                  task1.beschrijving =[task objectForKey:@"description"];
+                 
                  [self.toDoItems addObject:task1];
              }
                  [self.tableView reloadData];
