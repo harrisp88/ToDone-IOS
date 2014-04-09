@@ -9,6 +9,7 @@
 #import "ToDoListTableViewController.h"
 #import "ToDoItem.h"
 #import "AddToDoItemViewController.h"
+#import "ToDoListTableViewCell.h"
 
 @interface ToDoListTableViewController ()
 
@@ -133,12 +134,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
+    ToDoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
     // Configure the cell...
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     cell.textLabel.text = toDoItem.task;
     cell.detailTextLabel.text = toDoItem.beschrijving;
+    cell.taskId = toDoItem.taskId;
     
     if (toDoItem.completed) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -159,18 +161,36 @@
 }
 */
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        ToDoListTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://frankwammes.nl:8080/tasks/%ld", (long)cell.taskId ];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setHTTPMethod:@"DELETE"];
+
+        [NSURLConnection sendAsynchronousRequest: request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+         {
+             NSLog(@"Deleted task");
+         }];
+        
+        
+        [self.toDoItems removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
