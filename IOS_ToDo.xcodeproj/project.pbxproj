@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842E2E0B18F553F800BB44B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 842E2E0A18F553F800BB44B4 /* Settings.bundle */; };
 		843624B918DB2E4E00739F7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843624B818DB2E4E00739F7F /* Foundation.framework */; };
 		843624BB18DB2E4E00739F7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843624BA18DB2E4E00739F7F /* CoreGraphics.framework */; };
 		843624BD18DB2E4E00739F7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843624BC18DB2E4E00739F7F /* UIKit.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		842E2E0A18F553F800BB44B4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		843624B518DB2E4E00739F7F /* IOS_ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843624B818DB2E4E00739F7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		843624BA18DB2E4E00739F7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +128,7 @@
 				843624C718DB2E4E00739F7F /* AppDelegate.h */,
 				843624C818DB2E4E00739F7F /* AppDelegate.m */,
 				843624E718DB362B00739F7F /* Main.storyboard */,
+				842E2E0A18F553F800BB44B4 /* Settings.bundle */,
 				843624CA18DB2E4E00739F7F /* Images.xcassets */,
 				843624BF18DB2E4E00739F7F /* Supporting Files */,
 				CEA6CCFD18F53EA20089002E /* ToDoListTableViewCell.h */,
@@ -262,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842E2E0B18F553F800BB44B4 /* Settings.bundle in Resources */,
 				843624E818DB362B00739F7F /* Main.storyboard in Resources */,
 				843624C318DB2E4E00739F7F /* InfoPlist.strings in Resources */,
 				843624CB18DB2E4E00739F7F /* Images.xcassets in Resources */,

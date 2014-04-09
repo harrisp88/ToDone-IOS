@@ -16,20 +16,10 @@
 @property NSMutableArray *toDoItems;
 
 
+
 @end
 
 @implementation ToDoListTableViewController
-/*- (void)loadInitialData {
-    ToDoItem *task1 = [[ToDoItem alloc] init];
-    task1.task = @"Doe de afwas";
-    [self.toDoItems addObject:task1];
-    ToDoItem *task2 = [[ToDoItem alloc] init];
-    task2.task = @"Schoenen poetsen";
-    [self.toDoItems addObject:task2];
-    ToDoItem *task3 = [[ToDoItem alloc] init];
-    task3.task = @"App maken";
-    [self.toDoItems addObject:task3];
-}testdata*/
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
@@ -93,6 +83,11 @@
     }
     return self;
 }
+-(void)setUserName {
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"user_name"];
+    self.navigationItem.title = [NSString stringWithFormat:@"Welkom %@", userName];
+}
 
 - (void)viewDidLoad
 {
@@ -104,11 +99,9 @@
     //alles om die o zo lastige edit button te tonen (:
     //in een van de comments van: //http://stackoverflow.com/questions/7921579/iphone-storyboard-editing-a-table-view
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"user_name"];
+    //self.navigationItem.title = [NSString stringWithFormat:@"Welkom %@", userName];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
