@@ -226,8 +226,44 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
     tappedItem.completed = !tappedItem.completed;
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://frankwammes.nl:8080/tasks/%ld", (long)tappedItem.taskId ];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"PUT"];
+    
+    NSString* taskName = [self percentEscapeString:tappedItem.task];
+    NSString* taskDesc = [self percentEscapeString:tappedItem.beschrijving];
+    
+    NSString* postString = [NSString stringWithFormat:@"taskName=%@&taskDesc=%@&taskStatus=%s", taskName, taskDesc, tappedItem.completed ? "true" : "false"];
+    
+    NSData* postBody = [postString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postBody];
+    
+    [NSURLConnection sendAsynchronousRequest: request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         NSLog(@"Updated task");
+     }];
+    
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     //TODO update item
 }
+
+- (NSString *)percentEscapeString:(NSString *)string
+{
+    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                 (CFStringRef)string,
+                                                                                 (CFStringRef)@" ",
+                                                                                 (CFStringRef)@":/?@!$&'()*+,;=",
+                                                                                 kCFStringEncodingUTF8));
+    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+}
+
 
 @end
