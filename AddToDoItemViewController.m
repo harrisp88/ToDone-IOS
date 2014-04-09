@@ -65,16 +65,14 @@
          {
              NSLog(@"POST data ontvangen");
              NSError *e = nil;
-             NSArray *taskData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &e];
+             NSDictionary *taskData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &e];
              if(!taskData){
                  NSLog(@"Error met het parsen van POST JSON: %@", e);
              }else{
                  NSLog(@"Parsen van POST JSON gelukt");
-                 for (NSDictionary *task in taskData)
-                 {
-                     self.toDoItem.taskId = [[task objectForKey:@"ID"] intValue];
-                     NSLog(@"Got ID for posted task");
-                 }
+
+                 self.toDoItem.taskId = [[taskData objectForKey:@"ID"] intValue];
+                 NSLog(@"Got ID for posted task");
                  
              }
              
